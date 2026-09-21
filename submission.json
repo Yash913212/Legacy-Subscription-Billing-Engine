@@ -1,0 +1,7 @@
+{
+  "testData": {
+    "validUserId": "user-expired-123",
+    "unexpiredUserId": "user-active-456",
+    "nonExistentUserId": "user-not-found-789"
+  }
+}
