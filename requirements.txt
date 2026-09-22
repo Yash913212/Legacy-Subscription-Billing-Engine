@@ -1,0 +1,8 @@
+fastapi
+uvicorn
+asyncpg
+pytest
+pytest-asyncio
+python-dotenv
+pydantic
+python-dateutil

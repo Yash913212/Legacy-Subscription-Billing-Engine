@@ -5,8 +5,8 @@ The legacy `SubscriptionManager` class was tightly coupled, mixing database quer
 We are adopting a Ports and Adapters (Hexagonal) Architecture with Dependency Injection.
 - **Ports (Interfaces):** We defined explicit interfaces for `ITimeProvider`, `IPaymentGateway`, `ISubscriptionRepository`, and `IUserRepository` in the domain layer.
 - **Domain Service:** `SubscriptionBillingService` depends strictly on these interfaces, injected via its constructor. It executes pure business rules.
-- **Adapters:** We implemented concrete classes (`SystemTimeProvider`, `PostgresSubscriptionRepository`, `MockPaymentGateway`) in the infrastructure layer that implement these interfaces and handle the actual I/O.
-- **API Controller:** Serves as the entry point, responsible for instantiating the concrete adapters and injecting them into the service.
+- **Adapters:** We implemented concrete classes (`SystemTimeProvider`, `PostgresSubscriptionRepository`, `MockPaymentGateway`) in the infrastructure layer that implement these interfaces and handle the actual I/O via `asyncpg`.
+- **API Router:** The FastAPI router serves as the entry point, responsible for instantiating the concrete adapters and injecting them into the service.
 
 # Consequences
 **Positive:**

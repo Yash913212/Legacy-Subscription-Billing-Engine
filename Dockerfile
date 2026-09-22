@@ -1,13 +1,10 @@
-FROM node:18-alpine
+FROM python:3.11-slim
 
-WORKDIR /usr/src/app
+WORKDIR /app
 
-COPY package*.json ./
-RUN npm install
+COPY requirements.txt .
+RUN pip install --no-cache-dir -r requirements.txt
 
-COPY . .
+COPY src/ ./src/
 
-RUN npm run build
-
-EXPOSE 3000
-CMD [ "npm", "start" ]
+CMD ["uvicorn", "src.api.main:app", "--host", "0.0.0.0", "--port", "3000"]
